@@ -537,9 +537,11 @@ for t in range(1, 7):
 plt.figure(figsize=(6, 5))
 
 # ADE@t 增长趋势
+time_points = list(range(1, 7))
+ade_values = [avg_ade_at_t[f"ADE@{t}s"] for t in range(1, 7)]
 plt.subplot(1, 1, 1)
 plt.plot(time_points, ade_values, 'o-', color='#FF6B6B', linewidth=0.5, markersize=4)
-plt.xlabel('Prediction Horizon')
+plt.xlabel('Prediction Horizon (s)')
 plt.ylabel('ADE (m)')
 plt.title('ADE Growth with Prediction Horizon')
 plt.grid(True)
@@ -596,6 +598,7 @@ with torch.no_grad():
         ax.axis('equal')
 
 plt.tight_layout()
+plt.savefig('trajectory_predictions.png', dpi=150, bbox_inches='tight')
 plt.show()
 
 
